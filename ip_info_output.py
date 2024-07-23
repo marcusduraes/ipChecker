@@ -26,7 +26,7 @@ def main(ip, mask):
     ip_out = subprocess.check_output(f'nmap -sn {hosts[-1]}', text=True)
 
     if not is_pppoe and 'Host is up' not in str(ip_out):
-        text = f'{check_gw(hosts[0])}\n\nGW: {hosts[0]}\nIP: {hosts[-1]}'
+        text = f'{check_gw(hosts[0])}\n\nGW: {hosts[0]} (UP)\nIP: {hosts[-1]} (DOWN)'
         return text if 'Host is up' in text else None
     else:
         return ip_out if 'Host is up' in ip_out else None
